@@ -31,9 +31,14 @@ export default class HelloWorld extends Component {
             alert('hiii')
           }
           />
-          <Button title='Buton'
+          <Button title='Menu'
             onPress={()=>
               navigate('Profile',{name:'st'})
+            }
+            />
+          <Button title='My Cart'
+            onPress={()=>
+              navigate('MyCart')
             }
             />
       </View>

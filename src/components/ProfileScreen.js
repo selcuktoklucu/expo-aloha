@@ -84,6 +84,7 @@ export default class ProfileScreen extends Component {
           <Text>Long: { location.coords.longitude}</Text>
           {items.map(item =>(
             <Card
+              key={items.indexOf(item)}
               name={item}
             />
           ))}

@@ -2,13 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import HelloWorld from './src/components/HelloWorld';
 import ProfileScreen from './src/components/ProfileScreen';
+import MyCart from './src/components/MyCart';
 
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 const MainNavigator = createStackNavigator({
   Home: {screen: HelloWorld},
-  Profile: {screen:ProfileScreen}
+  Profile: {screen:ProfileScreen},
+  MyCart:{screen: MyCart}
 });
 
 const App = createAppContainer(MainNavigator);
