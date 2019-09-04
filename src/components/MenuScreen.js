@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Platform, TouchableOpacity,AppRegistry, Image,View,Text, Button, PermissionsAndroid } from 'react-native';
+import { ScrollView,Platform, TouchableOpacity,AppRegistry, Image,View,Text, Button, PermissionsAndroid } from 'react-native';
 import Card from './Card'
 import Constants from 'expo-constants'
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
+import {connect} from 'react-redux'
+import store from './redux/store'
 
-export default class ProfileScreen extends Component {
+class MenuScreen extends Component {
   state = {
     location: {
       coords: {
@@ -13,7 +15,7 @@ export default class ProfileScreen extends Component {
         longitude: 0
       }
     },
-    items: ['Pizzas','Subs','Drinks'],
+    items: ['Cheese Pizza','Peperoni Pizza','Chicken Cutlet Sub','Steak and Cheese','Coke', 'Water','Tuna sub','Calzone','French fries','Onion Rings','Chicken Ceasar Wrap','Mozzarella Sticks','Chicken Parm Sub','Turkey Sub','BLT','Hummus wrap','Chicken wings'],
     errorMessage: null,
   };
 
@@ -42,6 +44,7 @@ export default class ProfileScreen extends Component {
 
   render() {
     const {location, items} = this.state
+    const mainStore = store.getState()
 
     let pic = {
       uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
@@ -50,46 +53,22 @@ export default class ProfileScreen extends Component {
       uri: 'https://sei-roberto.s3.amazonaws.com/1a83b54a90d7abcebe2cd40abee6f13e'
     }
     return (
-      <View>
-        <Image source={pic} style={{width: 193, height: 110}}/>
-        <TouchableOpacity
-          onLongPress={() => {
-            alert('??? ')
-          }}
-          onPress={() => {
-            requestCameraPermission()
-          }}
-          underlayColor='red'
-          >
-
-          <Text>Highlight mee</Text>
-        </TouchableOpacity>
-        <Button title='Buton'
-          onPress={()=>
-            fetch('https://mylistss.herokuapp.com/tasks', {
-              method: 'POST',
-              headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                firstParam: 'yourValue',
-                secondParam: 'yourOtherValue',
-              }),
-            })
-          }
-          />
-          <Text>{Constants.deviceName}</Text>
-          <Text>Lat: { location.coords.latitude}</Text>
-          <Text>Long: { location.coords.longitude}</Text>
+      <View style={{flex: 1}}>
+          <ScrollView>
           {items.map(item =>(
             <Card
               key={items.indexOf(item)}
               name={item}
             />
           ))}
+          </ScrollView>
       </View>
     );
   }
 }
+
+const getPropsFromStore = state => ({
+  cartItems: state.cartItems
+})
+export default connect(getPropsFromStore)(MenuScreen)
 // export default withRouter(HelloWorld)

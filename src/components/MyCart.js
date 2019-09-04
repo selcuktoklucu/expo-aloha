@@ -19,6 +19,7 @@ export default class MyCart extends Component {
     return (
       <View>
           <Text style={styles.titleText} >Your Cart</Text>
+          <Text>{/*mainStore.cartItems.length*/}</Text>
           {mainStore.cartItems.map(item =>(
             <Text style={styles.baseText} key={mainStore.cartItems.indexOf(item)}>{item.name}</Text>
           ))}

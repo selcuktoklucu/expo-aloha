@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Alohatest",
+    "name": "alohatest",
     "slug": "expo-aloha",
     "privacy": "public",
     "sdkVersion": "34.0.0",
@@ -25,6 +25,9 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "android": {
+       "package": "com.selcuk.alohatest"
+     }
   }
 }
