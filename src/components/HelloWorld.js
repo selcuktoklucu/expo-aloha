@@ -12,7 +12,6 @@ import config from '../aws-exports'
 
 Amplify.configure(config)
 
-
 const StyledView = styled.View`
   background-color: papayawhip;
   display: flex;
@@ -113,7 +112,8 @@ state ={
       return(
         <View>
           <TextInput
-            placeholder='inputcode'
+            placeholder='Confirm Your Phone'
+            style={styles.textInput}
             onChangeText={value => this.onChangeText(value)}
           />
           <TouchableOpacity style={{ margin:10, alignSelf: 'center'}}>
@@ -186,11 +186,8 @@ state ={
     )}
   }
   render() {
-    //console.log('screenHeight',screenHeight)
     const mainStore = store.getState()
-    // let cartTitle = `My Cart ${mainStore.cartItems.length}`
     let cartTitle = (this.props.cartItems.length > 0) ? `My Cart (${this.props.cartItems.length})` : 'Cart is Empty'
-    // console.log('mainstore at mainScreen', mainStore)
     let pic = {
       uri: 'https://media.giphy.com/media/4ayiIWaq2VULC/giphy.gif'
     };
@@ -200,12 +197,9 @@ state ={
     const {navigate} = this.props.navigation
     const { userName} = this.state
     const {showSignIn} = this.state
-    // console.log(this.state.userName)
-    // console.log('navigett',this.props.navigation)
     return (
         <ImageBackground source={bckImage} style={{width: '100%', height: '100%'}}>
           <View style={{width: (screenWidth*0.8), height: (screenHeight*0.5), alignSelf: 'center', overflow: 'hidden', borderRadius: 20}}>
-          {/*<Image source={pic} style={{width: 193, height: 210, alignSelf: 'center'}}/>*/}
           {this.toggleSignIn()}
           </View>
 

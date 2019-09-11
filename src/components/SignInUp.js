@@ -43,7 +43,7 @@ class SignIn extends Component {
              <Button title='Sign In'
                width="1000px"
                color="#2c04af"
-               onPress={this.props.onSignIn}// this.setState({/*showSignIn:false*/})
+               onPress={this.props.onSignIn}
 
              />
            </TouchableOpacity>
@@ -156,4 +156,3 @@ export {
   SignIn,
   SignUp
 }
-// export default withRouter(HelloWorld)
