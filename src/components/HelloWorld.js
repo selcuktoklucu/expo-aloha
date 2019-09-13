@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ToastAndroid, StyleSheet,TextInput,TouchableOpacity,AppRegistry, Image,View,Text, Dimensions, ImageBackground, Switch /*Button*/  } from 'react-native';
+import { ToastAndroid, StyleSheet,
+  TextInput,TouchableOpacity,AppRegistry, Image,View,Text, Dimensions, ImageBackground, Switch /*Button*/  } from 'react-native';
 import styled from 'styled-components/native'
 import {connect} from 'react-redux'
 const bckImage = require('./pizza_background.png')
@@ -9,6 +10,8 @@ import store from './redux/store'
 import {SignIn, SignUp} from './SignInUp'
 import Amplify, { Auth } from 'aws-amplify'
 import config from '../aws-exports'
+import AwesomeButton from "react-native-really-awesome-button";
+import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
 
 Amplify.configure(config)
 
@@ -203,20 +206,14 @@ state ={
           {this.toggleSignIn()}
           </View>
 
-          <View style={{ flexGrow: 1, justifyContent: 'flex-end', marginBottom: 0}}>
+          <View style={{ flexGrow: 1, justifyContent: 'flex-start', alignItems:'center', marginTop: 10}}>
 
-            <TouchableOpacity style={{margin:10}}>
-              <Button title='Menu'
-                onPress={()=>
-                  navigate('Menu',{name:'st'})
-                }
-                />
-              <Button title={cartTitle}
-                onPress={()=>
-                  navigate('MyCart')
-                }
-                />
-            </TouchableOpacity>
+            <AwesomeButtonRick onPress={()=>navigate('Menu',{name:'st'})} type='secondary' textSize={20} height={44} paddingHorizontal={88} backgroundColor='#404040'>
+              Menu!
+            </AwesomeButtonRick>
+            <AwesomeButtonRick onPress={()=>navigate('MyCart',)} type='secondary' textSize={20} width={235} height={44} backgroundColor='#404040'>
+              {cartTitle}
+            </AwesomeButtonRick>
           </View>
         </ImageBackground>
     );

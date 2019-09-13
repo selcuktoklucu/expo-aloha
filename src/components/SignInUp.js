@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {View, TextInput, StyleSheet,Text,TouchableOpacity,Button } from 'react-native';
+// import * as Font from 'expo-font';
 
 class SignIn extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class SignIn extends Component {
              style={styles.buttonOption}
              onPress={this.props.setShowSignIn}
              >
-           <Text style={{ fontWeight:'bold',  }}>Trying to Register?</Text>
+           <Text style={{ fontWeight:'bold',  }}>Sign Up!</Text>
 
            </TouchableOpacity>
            <TouchableOpacity style={{ margin:5, alignSelf: 'center'}}>
@@ -56,75 +57,93 @@ class SignIn extends Component {
 class SignUp extends Component {
   constructor(props) {
     super(props)
+    this.state= {
+      fontLoaded: false
+    }
   }
+  // async componentDidMount() {
+  //   console.log('font loading')
+  //   await Font.loadAsync({
+  //     'Pacifico': require('../../assets/fonts/Pacifico-Regular.ttf'),
+  //   });
+  //   console.log('font loaded')
+  //
+  //   this.setState({fontLoaded: true})
+  // }
   render (){
-    console.log('aaaa',this.props.setChangeText)
-     return(
-       <View >
-         <TextInput
-           placeholder='e-mail'
-           autoCompleteType= 'email'
-           autoFocus={true}
-           maxLength={40}
-           keyboardType='email-address'
-           style={styles.textInput}
-           ref={(el) => { this.userName=el }}
-           onChangeText={(userName) => this.props.setUserName(userName)}
-           value={this.props.userName}
-         />
-         <TextInput
-           placeholder='Phone Number'
-           autoCompleteType= 'tel'
-           maxLength={10}
-           dataDetectorTypes='phoneNumber'
-           keyboardType='number-pad'
-           style={styles.textInput}
-           ref={(el) => { this.phoneNumber=el }}
-           onChangeText={(phoneNumber) => this.props.setPhone(phoneNumber)}
-           value={this.props.phoneNumber}
-         />
-         <TextInput
-           placeholder='password'
-           secureTextEntry={true}
-           maxLength={40}
-           style={styles.textInput}
-           ref={(password) => { this.password=password }}
-           onChangeText={(password) => this.props.setPassword(password)}
-           value={this.props.password}
-         />
-         <TextInput
-           placeholder='Confirm Password'
-           secureTextEntry={true}
-           maxLength={40}
-           style={styles.textInput}
-           ref={(passwordConfirm) => { this.passwordConfirm=passwordConfirm }}
-           onChangeText={(password) => this.props.setCPassword(password)}
-           value={this.props.passwordConfirm}
-         />
-         <View style={{ flexGrow: 1, justifyContent:'space-between', flexDirection:"row"}}>
-           <TouchableOpacity
-             style={styles.buttonOption}
-             onPress={this.props.setShowSignIn}
-             >
-             <Text style={{ fontWeight:'bold',  }}>Do you have account?</Text>
+    console.log('aaaa',this.state)
+    // if(!this.state.fontLoaded){
+    //   return <Text style={{fontFamily: "sans-serif"}}>fdsfsd aa</Text>
+    // }else {
 
-           </TouchableOpacity>
-           <TouchableOpacity style={{ margin:5, alignSelf: 'center'}}>
-             <Button title='Sign Up'
-               width="1000px"
-               color="#2c04af"
-               onPress={this.props.onSignUp}
-             />
-           </TouchableOpacity>
-         </View>
-       </View>
-   )
+      return(
+        <View >
+          <TextInput
+            placeholder='e-mail'
+            autoCompleteType= 'email'
+            autoFocus={true}
+            maxLength={40}
+            keyboardType='email-address'
+            style={styles.textInput}
+            ref={(el) => { this.userName=el }}
+            onChangeText={(userName) => this.props.setUserName(userName)}
+            value={this.props.userName}
+          />
+          <TextInput
+            placeholder='phone Number'
+            autoCompleteType= 'tel'
+            maxLength={10}
+            dataDetectorTypes='phoneNumber'
+            keyboardType='number-pad'
+            style={styles.textInput}
+            ref={(el) => { this.phoneNumber=el }}
+            onChangeText={(phoneNumber) => this.props.setPhone(phoneNumber)}
+            value={this.props.phoneNumber}
+          />
+          <TextInput
+            placeholder='password'
+            secureTextEntry={true}
+            maxLength={40}
+            style={styles.textInput}
+            ref={(password) => { this.password=password }}
+            onChangeText={(password) => this.props.setPassword(password)}
+            value={this.props.password}
+          />
+          <TextInput
+            placeholder='confirm Password'
+            secureTextEntry={true}
+            maxLength={40}
+            style={styles.textInput}
+            ref={(passwordConfirm) => { this.passwordConfirm=passwordConfirm }}
+            onChangeText={(password) => this.props.setCPassword(password)}
+            value={this.props.passwordConfirm}
+          />
+          <View style={{ flexGrow: 1, justifyContent:'space-between', flexDirection:"row"}}>
+            <TouchableOpacity
+              style={styles.buttonOption}
+              onPress={this.props.setShowSignIn}
+              >
+                <Text style={{ fontWeight:'bold',  }}>Do you have account?</Text>
+
+              </TouchableOpacity>
+              <TouchableOpacity style={{ margin:5, alignSelf: 'center'}}>
+                <Button title='Sign Up'
+                  width="1000px"
+                  color="#2c04af"
+                  onPress={this.props.onSignUp}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        )
+    // }
  }
 }
 
 const styles = StyleSheet.create({
  textInput: {
   height: 40,
+  fontFamily: "Pacifico",
   backgroundColor: '#00000090',
   color : '#d6c9c9',
   textAlign: 'center',
