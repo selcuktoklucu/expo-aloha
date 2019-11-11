@@ -12,13 +12,17 @@
     "aws-amplify-react-native": "^2.1.16",
     "expo": "^34.0.1",
     "expo-font": "^6.0.1",
+    "expo-secure-store": "~6.0.0",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-cardview": "^2.0.3",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.3.0",
+    "react-native-google-places-autocomplete": "^1.3.9",
+    "react-native-idtech-msr-audio": "git+https://github.com/oncethere/react-native-idtech-msr-audio.git",
     "react-native-maps": "^0.25.0",
+    "react-native-open-maps": "^0.3.4",
     "react-native-really-awesome-button": "^1.4.2",
     "react-native-reanimated": "^1.1.0",
     "react-native-web": "^0.11.4",
@@ -26,7 +30,8 @@
     "react-navigation-stack": "^1.5.1",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^6.0.0"

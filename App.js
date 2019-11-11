@@ -11,7 +11,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 const MainNavigator = createStackNavigator({
   Home: {screen: HelloWorld, navigationOptions: ({ navigation}) => ({
-    title:'Kristen\'s Pizzeria',
+    title:'DOTDB',
     headerStyle: {
       backgroundColor: '#ffffff80',
 
