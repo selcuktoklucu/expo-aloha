@@ -50,7 +50,7 @@ class HelloWorld extends Component {
     password: "stst",
     searchPhoneNumber: "857206539",
     authCode: "",
-    showSignIn: false,
+    showSignIn: true,
     signedIn: false,
     justSignedUp: false
   };

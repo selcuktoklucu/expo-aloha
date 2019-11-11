@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import * as SecureStore from "expo-secure-store";
 import { NavigationActions } from "react-navigation";
 
+const serverAddress = "https://dotdot-api.herokuapp.com";
+//http://192.168.1.237
 export const signIn = (userName, password) => {
-  fetch("http://192.168.1.237:4741/sign-in/", {
+  fetch(`${serverAddress}/sign-in/`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -35,15 +37,12 @@ export const signIn = (userName, password) => {
 
 export const signInTokenControl = async token => {
   try {
-    const response = await fetch(
-      `http://192.168.1.237:4741/customers/8572065397`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + token
-        }
+    const response = await fetch(`${serverAddress}/customers/8572065397`, {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token
       }
-    );
+    });
     const responseJson = await response.json();
     //console.log('rp data',response.json())
     console.log("responseJson", responseJson);
@@ -66,10 +65,10 @@ export const searchAddressNearBy = async text => {
 
 export const searchPhone = async phone => {
   // const token = SecureStore.getItemAsync('secure_token')
-  // console.log('searchByPhone network', token)
+  console.log("searchByPhone network", token);
 
   const token = await SecureStore.getItemAsync("secure_token");
-  const response = await fetch(`http://192.168.1.237:4741/customers/${phone}`, {
+  const response = await fetch(`${serverAddress}/customers/${phone}`, {
     method: "GET",
     headers: {
       Authorization: "Bearer " + token
@@ -89,7 +88,7 @@ export const postAddress = async data => {
   const token = await SecureStore.getItemAsync("secure_token");
 
   console.log("postaddress dataa:", token, data);
-  const response = await fetch(`http://192.168.1.237:4741/customers/`, {
+  const response = await fetch(`${serverAddress}/customers/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -51,7 +51,6 @@ class SignIn extends Component {
         <Text> </Text>
         <View
           style={{
-            flexGrow: 1,
             justifyContent: "space-between",
             flexDirection: "row"
           }}
@@ -62,13 +61,11 @@ class SignIn extends Component {
           >
             <Text style={{ fontWeight: "bold" }}>Sign Up!</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{ margin: 5, alignSelf: "center" }}>
-            <Button
-              title="Sign In"
-              width="1000px"
-              color="#2c04af"
-              onPress={this.props.onSignIn}
-            />
+          <TouchableOpacity
+            style={styles.buttonOption}
+            onPress={this.props.onSignIn}
+          >
+            <Text style={{ fontWeight: "bold" }}>Sign In!</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -137,8 +134,7 @@ class SignUp extends Component {
         />
         <View
           style={{
-            flexGrow: 1,
-            justifyContent: "space-between",
+            justifyContent: "flex-start",
             flexDirection: "row"
           }}
         >
@@ -174,6 +170,8 @@ const styles = StyleSheet.create({
     marginTop: 2
   },
   buttonOption: {
+    height: 45,
+    justifyContent: "center",
     overflow: "hidden",
     borderRadius: 20,
     margin: 0,
