@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import * as SecureStore from "expo-secure-store";
 import { NavigationActions } from "react-navigation";
+import { serverAddress } from "../../config";
 
-const serverAddress = "https://dotdot-api.herokuapp.com";
 //http://192.168.1.237
 export const signIn = (userName, password) => {
   fetch(`${serverAddress}/sign-in/`, {
@@ -32,11 +32,15 @@ export const signIn = (userName, password) => {
     .then(st => {
       console.log("secureToken", st);
       this.setState({ signedIn: true });
+    })
+    .catch(e => {
+      console.error("ERROR", e);
     });
 };
 
 export const signInTokenControl = async token => {
   try {
+    console.log("sign in confirmation?");
     const response = await fetch(`${serverAddress}/customers/8572065397`, {
       method: "GET",
       headers: {

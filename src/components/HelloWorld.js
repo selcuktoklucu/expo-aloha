@@ -28,6 +28,7 @@ import AwesomeButtonRick from "react-native-really-awesome-button/src/themes/ric
 import * as SecureStore from "expo-secure-store";
 import { signInTokenControl } from "../api/api";
 Amplify.configure(config);
+import { serverAddress } from "../../config";
 
 const StyledView = styled.View`
   display: flex;
@@ -168,7 +169,7 @@ class HelloWorld extends Component {
           <SignIn
             onSignIn={() => {
               console.log("heyy");
-              fetch("http://192.168.1.237:4741/sign-in/", {
+              fetch(`${serverAddress}/sign-in/`, {
                 method: "POST",
                 headers: {
                   Accept: "application/json",

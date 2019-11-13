@@ -43,7 +43,7 @@ class SearchAndAdd extends Component {
   }
 
   async onAddressChange(currentAddress) {
-    if (currentAddress.length > 3) {
+    if (currentAddress.length > 4) {
       results = await searchAddressNearBy(currentAddress);
       this.setState({
         predefinedAddresses: results,
@@ -58,7 +58,7 @@ class SearchAndAdd extends Component {
   changeQuery = value => {
     this.setState({ currentAddress: value }, () => {
       const currentAddress = this.state.currentAddress;
-      if (currentAddress.length < 5) {
+      if (currentAddress.length < 3) {
         this.autocompleteSearchThrottled(this.state.currentAddress);
       } else {
         this.autocompleteSearchDebounced(this.state.currentAddress);
@@ -92,7 +92,7 @@ class SearchAndAdd extends Component {
       address: this.state.currentAddress,
       name: this.state.name
     };
-    openMap({ end: this.state.currentAddress, navigate_mode: "navigate" });
+    // openMap({ end: this.state.currentAddress, navigate_mode: "navigate" });
     postAddress(data) ? this.cleanFields() : console.log("error");
   };
   setSuggestedAddress = value => {
@@ -163,7 +163,13 @@ class SearchAndAdd extends Component {
   };
 
   cleanFields = () => {
-    this.setState({ isReady: true, isDone: false, name: "", address: "" });
+    this.setState({
+      isReady: true,
+      isDone: false,
+      name: "",
+      currentAddress: "",
+      predefinedAddresses: []
+    });
     this.props.action();
   };
   render() {
@@ -282,9 +288,10 @@ class SearchAndAdd extends Component {
 
 const styles = StyleSheet.create({
   textInput: {
-    height: 40,
-    fontSize: 16,
+    height: 60,
+    fontSize: 20,
     fontFamily: "Pacifico",
+    width: "100%",
     backgroundColor: "#00000090",
     color: "#d6c9c9",
     textAlign: "center",
@@ -296,7 +303,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     borderRadius: 20,
     margin: 0,
-    marginBottom: 25,
+    marginBottom: 10,
     opacity: 0.8,
     padding: 5,
     alignSelf: "center",
